@@ -1,6 +1,8 @@
 import Classes.ItemGenerator;
+import Factories.BronzeGenerator;
 import Factories.GoldGenerator;
 import Factories.SilverGenerator;
+import Factories.WoodGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +16,22 @@ public class Main {
 
         ItemGenerator generator2 = new SilverGenerator();
         generator2.openReward();
+
+        ItemGenerator generator3 = new BronzeGenerator();
+        generator3.openReward();
+
+        ItemGenerator generator4 = new WoodGenerator();
+        generator4.openReward();
         // рандомайзер
         Random rnd = ThreadLocalRandom.current();
         List<ItemGenerator> fabricList = new ArrayList<>();
         fabricList.add(generator);
         fabricList.add(generator2);
+        fabricList.add(generator3);
+        fabricList.add(generator4);
 
         for (int i = 0; i < 20; i++) {
-            int index = Math.abs(rnd.nextInt()%2==0?0:1);
+            int index = Math.abs(rnd.nextInt()%4);
             fabricList.get(index).openReward();
 
         }
